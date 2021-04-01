@@ -1,0 +1,27 @@
+//
+//  Plugin.pch
+//  MyUnityPlugin
+//
+
+#ifndef Plugin_pch
+#define Plugin_pch
+#define NUM_OF_PARTS 68
+
+//namespace cv {
+//    class VideoCapture;
+//}
+//namespace dlib {
+//    class rectangle;
+//    class frontal_face_detector;
+//}
+
+extern "C" {
+    void* getVideoDevice(int camera_num);
+    void releaseVideoDevice(void* cap);
+    void* getDetectorAndPoseModel(const char* model_dat_path);
+    void detect(void* cap, void* dapm, int face_rect[4], int parts_matrix[NUM_OF_PARTS][2]);
+    void setImgSize(void* cap, int img_size_w, int img_size_h);
+}
+
+
+#endif /* Plugin_pch */
